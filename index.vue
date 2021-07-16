@@ -93,38 +93,46 @@ export default {
 
             video.oncanplay = (e) => {
                 this.info.duration = e.target.duration;
-                this.updateState('stopped')
+                this.updateState('stopped');
+                this.$emit('canplay', e.target);
             };
             video.onplay = (e) => {
                 this.thisTimePlayFrom = e.target.currentTime;
 
                 this.updateState('playing');
+                this.$emit('play', e.target);
             };
             video.onplaying = (e) => {
                 this.thisTimePlayFrom = e.target.currentTime;
 
                 this.updateState('playing');
+                this.$emit('playing', e.target);
             };
             video.onwaiting = () => {
-                this.updateState('loading')
+                this.updateState('loading');
+                this.$emit('waiting', e.target);
             };
             video.onpause = (e) => {
                 this.updateState('paused');
+                this.$emit('pause ', e.target);
 
                 this.updateWatched(this.thisTimePlayFrom, e.target.currentTime);
             };
             video.onended = (e) => {
                 this.updateState('stopped');
+                this.$emit('ended', e.target);
 
                 this.updateWatched(this.thisTimePlayFrom, e.target.currentTime);
             };
             video.ontimeupdate = (e) => {
                 this.info.currentTime = e.target.currentTime;
+                this.$emit('timeupdate', e.target);
 
                 this.updateWatched(this.thisTimePlayFrom, e.target.currentTime);
             };
             video.onprogress = (e) => {
                 var buffered = e.target.buffered;
+                this.$emit('progress', e.target);
 
                 var bufferedArr = [];
 
