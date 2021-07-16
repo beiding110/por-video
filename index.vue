@@ -81,8 +81,7 @@ export default {
                     
                     this.attachEvents();
                 };
-            }, 
-            immediate: true,
+            }
         }
     },
     methods: {
@@ -264,6 +263,13 @@ export default {
                 this.userCompleteThisVideo = true;
             }
         },
+    },
+    mounted() {
+        if (this.src) {
+            this.$refs.video.src = this.src;
+
+            this.attachEvents();
+        }
     },
 }
 </script>
