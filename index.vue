@@ -79,6 +79,12 @@ export default {
                 if(n) {
                     this.$refs.video.src = n;
                     
+                    try {
+                        this.$refs.video.load();
+                    } catch(e) {
+                        
+                    }
+                    
                     this.attachEvents();
                 };
             }
