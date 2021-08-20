@@ -114,7 +114,7 @@ export default {
                 this.updateState('playing');
                 this.$emit('playing', e.target);
             };
-            video.onwaiting = () => {
+            video.onwaiting = (e) => {
                 this.updateState('loading');
                 this.$emit('waiting', e.target);
             };
