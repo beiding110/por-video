@@ -13,7 +13,7 @@
             :duration="info.duration"
             :current-time="info.currentTime"
             :buffered="info.buffered"
-            :watched="watched"
+            :watched="watchedModel"
             :show-watch="showWatch"
             @play="playHandler"
             @pause="pauseHandler"
@@ -66,7 +66,7 @@ export default {
         },
         watchedModel: {
             get() {
-                return this.watched;
+                return this.watched || [];
             },
             set(val) {
                 this.$emit('update:watched', val);
@@ -163,7 +163,7 @@ export default {
         },
         playHandler() {
             this.video.play();
-            this.updateTime();
+            this.updateTime.call(this);
         },
         pauseHandler() {
             this.video.pause();
