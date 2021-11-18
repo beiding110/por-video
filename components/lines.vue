@@ -168,9 +168,15 @@ export default {
             }
         },
         dragEnd() {
+            if (!this.dragging) {
+                return;
+            }
+
             this.dragging = false;
             this.dragStartX = 0;
             // this.dragLeft = 0;
+
+            this.$emit('play');
         },
         dragBtnEnd(event) {
             if(!this.updateOnDrag) {

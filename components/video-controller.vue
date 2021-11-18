@@ -56,6 +56,7 @@
                     :update-on-drag="!showWatch"
                     @pause="$emit('pause')"
                     @update="$emit('update', $event)"
+                    @play="$emit('play')"
                 ></lines>
             </div>
 
@@ -230,6 +231,7 @@ export default {
         background-image: linear-gradient(0deg,rgba(0,0,0,.76),transparent);
         transition: all .3s;
         opacity: 1;
+        user-select: none;
 
         &.transparent{
             opacity: 0;
